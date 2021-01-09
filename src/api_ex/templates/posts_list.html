@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post list view</title>
+</head>
+<body>
+    {% for i in posts %}
+    <div class="d-flex justify-content-center align-items-center container">
+        <div class="card" style="width: 18rem;" class="card text-center">
+            <img src="..." class="card-img-top" alt="Post title">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text">{{ i.body }}</p>
+              <a href="http://127.0.0.1:8000/posts/{{ i.id }}" class="btn btn-primary">Show details</a>
+            </div>
+          </div>
+    </div>
+        {% endfor %}
+</body>
+</html>

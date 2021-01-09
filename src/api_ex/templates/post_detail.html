@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post details view</title>
+</head>
+<body>
+    <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Post title - {{ post.title }}</h5>
+          <p class="card-text">Post body - {{ post.body }}</p>
+          <a href="http://127.0.0.1:8000/posts/" class="btn btn-primary">Go back</a>
+        </div>
+        {% for i in post_tags %}
+        <a href="http://127.0.0.1:8000/tags/{{ i.id }}" class="card-img-top" class="btn btn-primary">Tag object - {{ i.name }}</a>
+          {% endfor %}
+      </div>
+</body>
+</html>
