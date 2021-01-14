@@ -25,11 +25,16 @@ def home(request):
 
 def posts_view(request):
     posts = list(Post.objects.all())
-    return render(request, 'posts_list.html', context={'posts':posts})
+    tags = list(Tag.objects.all())
+    return render(request, 'posts_list.html', context={'posts':posts, 'tags':tags})
 
 def post_detail_view(request, post_id):
     post = Post.objects.get(pk=post_id)
-    return render(request, 'post_detail.html', context={'post':post, 'post_tags':post.tags.all()})
+    post_tags = post.tags.all()
+    return render(request, 'post_detail.html', context={'post':post, 'post_tags':post_tags})
+
+def post_create(request):
+    return render(request, 'post_create.html')
 
 def tag_view(request, tag_id):
     tag = Tag.objects.get(pk=tag_id)

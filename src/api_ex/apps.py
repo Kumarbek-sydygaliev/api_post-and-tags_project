@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class ApiExConfig(AppConfig):
-    name = 'api_app'
+    name = 'api_ex'
+    verbose_name = 'Апи'
