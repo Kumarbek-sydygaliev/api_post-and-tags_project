@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post create</title>
+    <title>Tag create</title>
     <style>
         .dropbtn {
           background-color: #4CAF50;
@@ -71,22 +71,20 @@
               <div class="dropdown-content">
                 <a href="http://127.0.0.1:8000/tag/create">Create a new tag</a>
                 <a href="http://127.0.0.1:8000/post/create">Create a new post</a>
-              </div>
+               </div>
             </div>
           </ul>
         </div>
       </nav>
     <form class="col-sm-3 my-1" method='GET'>
         <div class="form-group" class="card text-center">
-            <label for="exampleFormControlInput1">Post title</label name>
-            <input type="text" class="form-control" placeholder="Post title" name='title'>
-            <label for="exampleFormControlInput1">Post body</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" input type="text" name="body" placeholder="Post body"></textarea>
+            <label for="exampleFormControlInput1">Tag name</label name>
+            <input type="text" class="form-control" placeholder="Tag name" name='name'>
             <div class="form-group">
-                <label for="exampleFormControlSelect2">Select tags</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2" input type="text" name='chosen_tags'>
-                  {% for tag in tags %}
-                    <option>{{ tag.name }}</option>
+                <label for="exampleFormControlSelect2">Select posts</label>
+                <select multiple class="form-control" id="exampleFormControlSelect2" input type="text" name='chosen_posts'>
+                  {% for post in posts %}
+                    <option>{{ post.title }}</option>
                   {% endfor %}
                 </select>
               </div>

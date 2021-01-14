@@ -23,22 +23,47 @@ from .serializers import(
 def home(request):
     return HttpResponse('<h1>Hello World</h1>')
 
-def posts_view(request):
-    posts = list(Post.objects.all())
-    tags = list(Tag.objects.all())
-    return render(request, 'posts_list.html', context={'posts':posts, 'tags':tags})
+def main_view(request):
+    posts = Post.objects.all().order_by('-id')
+    tags = Tag.objects.all().order_by('-id')
+    return render(request, 'main_view.html', context={'posts':posts, 'tags':tags})
 
 def post_detail_view(request, post_id):
+    posts = Post.objects.all().order_by('-id')
+    tags = Tag.objects.all().order_by('-id')
+
     post = Post.objects.get(pk=post_id)
     post_tags = post.tags.all()
-    return render(request, 'post_detail.html', context={'post':post, 'post_tags':post_tags})
+    return render(request, 'post_detail.html', context={'post':post, 'post_tags':post_tags, 'posts':posts, 'tags':tags})
 
 def post_create(request):
-    return render(request, 'post_create.html')
+    posts = Post.objects.all().order_by('-id')
+    tags = Tag.objects.all().order_by('-id')
 
-def tag_view(request, tag_id):
+    if request.GET:
+        a = Post.objects.create(title=request.GET['title'], body=request.GET['body'])
+        for i in dict(request.GET)['chosen_tags']:
+            a.tags.add(Tag.objects.get(name=i).id)
+        a.save()
+    return render(request, 'post_create.html', context={'posts':posts, 'tags':tags})
+
+def tag_create(request):
+    posts = Post.objects.all().order_by('-id')
+    tags = Tag.objects.all().order_by('-id')
+
+    if request.GET:
+        a = Tag.objects.create(name=request.GET['name'])
+        for i in dict(request.GET)['chosen_posts']:
+            a.post.add(Post.objects.get(title=i).id)
+        a.save()
+    return render(request, 'tag_create.html', context={'posts':posts, 'tags':tags})
+
+def tag_detail_view(request, tag_id):
+    posts = Post.objects.all().order_by('-id')
+    tags = Tag.objects.all().order_by('-id')
+
     tag = Tag.objects.get(pk=tag_id)
-    return render(request, 'tag_detail.html', context={'tag':tag})
+    return render(request, 'tag_detail.html', context={'tag':tag, 'posts':posts, 'tags':tags})
 
 
 class PostListView(ListAPIView):
