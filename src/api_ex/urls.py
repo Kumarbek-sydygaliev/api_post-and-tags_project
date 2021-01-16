@@ -24,6 +24,7 @@ urlpatterns = [
     path('api_tag/remove/<int:tag_id>/', TagRemoveView.as_view()),
 
     path('', main_view),
+
     path('posts/<int:post_id>/', post_detail_view),
     path('post/create', post_create),
 

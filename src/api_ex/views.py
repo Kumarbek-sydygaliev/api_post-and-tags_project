@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 
 from rest_framework.decorators import api_view
@@ -32,6 +32,10 @@ def post_detail_view(request, post_id):
     posts = Post.objects.all().order_by('-id')
     tags = Tag.objects.all().order_by('-id')
 
+    if request.method == 'POST':
+        Post.objects.filter(id=post_id).delete()
+        return render(request, 'main_view.html', context={'posts':posts, 'tags':tags})
+
     post = Post.objects.get(pk=post_id)
     post_tags = post.tags.all()
     return render(request, 'post_detail.html', context={'post':post, 'post_tags':post_tags, 'posts':posts, 'tags':tags})
@@ -62,6 +66,10 @@ def tag_detail_view(request, tag_id):
     posts = Post.objects.all().order_by('-id')
     tags = Tag.objects.all().order_by('-id')
 
+    if request.method == 'POST':
+        Tag.objects.filter(id=tag_id).delete()
+        return render(request, 'main_view.html', context={'posts':posts, 'tags':tags})
+    
     tag = Tag.objects.get(pk=tag_id)
     return render(request, 'tag_detail.html', context={'tag':tag, 'posts':posts, 'tags':tags})
 

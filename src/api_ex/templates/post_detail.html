@@ -90,6 +90,10 @@
               {% endfor %}
             </div>
           </div>
+          <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="Delete post">
+          </form>
         </div>
       </div>
     </div>

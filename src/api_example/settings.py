@@ -25,7 +25,21 @@ SECRET_KEY = 'd@^(4kfm5po-ju*3rpp&gp0psm-gc-o&c7x+ya)5t)=3o4a6#v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['127.0.0.1']
+
+DEFAULT_EMAIL_FROM = 'faruh.creac@gmail.com'
+EMAIL_BCC = 'Qualle'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'faruh.creac@gmail.com'
+EMAIL_HOST_PASSWORD = '93iR#SStzd'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+SERVER_EMAIL = 'faruh.creac@gmail.com'
 
 
 # Application definition
@@ -38,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api_ex.apps.ApiExConfig',
+    'authe.apps.AutheConfig',
     'rest_framework',
 ]
 
