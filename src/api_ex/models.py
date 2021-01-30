@@ -23,7 +23,7 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
     
     def __str__(self):
-        return self.name
+        return self.title
 
 ## post = Post.objects.first()
 ## post.tags.all() ## related_name = 'tags' это название к post.tags.all() ,

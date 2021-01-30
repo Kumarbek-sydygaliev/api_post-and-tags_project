@@ -1,88 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post create</title>
-    <style>
-        .dropbtn {
-          background-color: #4CAF50;
-          color: white;
-          padding: 16px;
-          font-size: 16px;
-          border: none;
-        }
-        
-        .dropdown {
-          position: relative;
-          display: inline-block;
-        }
-        
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f1f1f1;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-        }
-        
-        .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-        }
-        
-        .dropdown-content a:hover {background-color: #ddd;}
-        
-        .dropdown:hover .dropdown-content {display: block;}
-        
-        .dropdown:hover .dropbtn {background-color: #3e8e41;}
-        </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="http://127.0.0.1:8000">Go home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <div class="dropdown">
-              <button class="dropbtn">Posts list</button>
-              <div class="dropdown-content">
-                {% for post in posts %}
-                  <a href="http://127.0.0.1:8000/posts/{{ post.id }}">{{ post.title }}</a>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Tags list</button>
-              <div class="dropdown-content">
-                {% for tag in tags %}
-                  <a href="http://127.0.0.1:8000/tags/{{ tag.id }}">{{ tag.name }}</a>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Create objects</button>
-              <div class="dropdown-content">
-                <a href="http://127.0.0.1:8000/tag/create">Create a new tag</a>
-                <a href="http://127.0.0.1:8000/post/create">Create a new post</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button class="dropbtn">Delete objects</button>
-              <div class="dropdown-content">
-                <a href="http://127.0.0.1:8000/tag/delete">Delete some tags</a>
-                <a href="http://127.0.0.1:8000/post/delete">Delete some posts</a>
-              </div>
-            </div>
-          </ul>
-        </div>
-      </nav>
     <form class="col-sm-3 my-1" method='GET'>
         <div class="form-group" class="card text-center">
             <label for="exampleFormControlInput1">Post title</label name>
@@ -102,3 +28,5 @@
     </form>
 </body>
 </html>
+
+{% endblock %}

@@ -28,18 +28,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
-DEFAULT_EMAIL_FROM = 'faruh.creac@gmail.com'
+DEFAULT_EMAIL_FROM = 'kajias1553@gmail.com'
 EMAIL_BCC = 'Qualle'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'faruh.creac@gmail.com'
-EMAIL_HOST_PASSWORD = '93iR#SStzd'
+EMAIL_HOST_USER = 'kumarbeksydygaliev44@gmail.com'
+EMAIL_HOST_PASSWORD = 'qwerty4134125'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-SERVER_EMAIL = 'faruh.creac@gmail.com'
+SERVER_EMAIL = 'kumarbeksydygaliev44@gmail.com'
 
 
 # Application definition
@@ -51,9 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api_ex.apps.ApiExConfig',
-    'authe.apps.AutheConfig',
+    'api_ex',
+    'authe',
     'rest_framework',
+    'celery',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +106,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'authe.Author'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -139,3 +142,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
